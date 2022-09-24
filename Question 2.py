@@ -1,4 +1,4 @@
-
+# Sample Input
 # int main ( )
 # {
 #      int a ;
@@ -18,41 +18,39 @@ separator = [',',':',';','\n','\t','{','}','(',')','[',']']
 operators = {'=': 'Assignment Operator', '+': 'Additon Operator', '-': 'Substraction Operator',
              '/': 'Division Operator', '*': 'Multiplication Operator', '++': 'increment Operator',
              '--': 'Decrement Operator','(':'(',')':')','{':'{','}':'}','[':'[',']':']'}
-# print(operators['='])
 optr_keys = operators.keys()       #keys of operators
+
 Token_count=0               #count of tokens
 
 import re
-
 #Function to check if the token is a keyword
 file = open('Input.c','r+')
 contents = file.read()
 splitCode = contents.split() 
-print(splitCode)
 Token_count=len(splitCode)
-print(f'Token Count is {Token_count}')
+print(f'Token Count : {Token_count} ')
+print('Tokens are:',splitCode,'\n')
 length = len(splitCode)      
 for i in range(0,length):
     if splitCode[i] in keyword:
-        print("Keyword -->",splitCode[i])
+        print("Keyword -->",splitCode[i],'\n')
         continue
     if splitCode[i] in optr_keys:
-        print("Operators --> ",operators[splitCode[i]])
+        print("Operators --> ",operators[splitCode[i]],'\n')
         continue
     if splitCode[i] in specialsymbol:
-        print("Special Operator -->",splitCode[i])
+        print("Special Operator -->",splitCode[i],'\n')
         continue
     if splitCode[i] in built_in_functions:
-        print("Built_in Function -->",splitCode[i])
+        print("Built_in Function -->",splitCode[i],'\n')
         continue
     if splitCode[i] in separator:
-        print("Separator -->",splitCode[i])
+        print("Separator -->",splitCode[i],'\n')
+
         continue
-    # if re.match(r'(#include*).*', splitCode[i]):
-    #     print ("Header File -->", splitCode[i])
-    #     continue
     if re.match(r'^[-+]?[0-9]+$',splitCode[i]):
-        print("Numerals --> ",splitCode[i])
+        print("Numerals --> ",splitCode[i],'\n')
+        
         continue
     if re.match(r"^[^\d\W]\w*\Z", splitCode[i]):
-        print("Identifier --> ",splitCode[i])
+        print("Identifier --> ",splitCode[i],'\n')
